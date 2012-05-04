@@ -1,0 +1,48 @@
+@import "compass/reset";
+@import "base";
+@import "fonts";
+
+#container {
+	overflow: auto;
+	margin: 0 auto;
+	/*width: percentage($container); */
+	@include gradient;
+}
+.searchholder input[type="text"] {
+	width:80%;
+}
+.searchholder {
+	width:80%;
+	margin: 0 auto;	
+	font-family: "Colaborate";
+
+}
+.title {
+	text-align:center;
+}
+.div1 {
+	width: percentage($div_width);
+	@include border;
+	@include box-sizing(border-box);
+} 
+
+.div2 {
+	width: percentage($div_width / 2);
+	float:left;
+	@include border;
+	@include box-sizing(border-box);
+} 
+
+.div3 {
+	width: percentage($div_width / 3);
+	float:left;
+	@include border;
+	@include box-sizing(border-box)
+} 
+
+.div4 {
+	width: percentage($div_width / 4);
+	float:left;
+	@include border;
+	@include box-sizing(border-box)
+} 

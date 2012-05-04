@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Icons";
+  src: url('../stylesheets/fonts/heydings_icons-webfont.eot');
+  src: url('../stylesheets/fonts/heydings_icons-webfont.eot?#iefix') format('eot'), url('../stylesheets/fonts/heydings_icons-webfont.woff') format('woff'), url('../stylesheets/fonts/heydings_icons-webfont.ttf') format('truetype'), url('../stylesheets/fonts/heydings_icons-webfont.svg') format('svg');
+}
+
+@font-face {
+  font-family: "Colaborate";
+  src: url('../stylesheets/fonts/ColabReg-webfont.eot');
+  src: url('../stylesheets/fonts/ColabReg-webfont.eot?#iefix') format('eot'), url('../stylesheets/fonts/ColabReg-webfont.woff') format('woff'), url('../stylesheets/fonts/ColabReg-webfont.ttf') format('truetype'), url('../stylesheets/fonts/ColabReg-webfont.svg') format('svg');
+}
+
+@font-face {
+  font-family: "ColaborateThin";
+  src: url('../stylesheets/fonts/ColabThi-webfont.eot');
+  src: url('../stylesheets/fonts/ColabThi-webfont.eot?#iefix') format('eot'), url('../stylesheets/fonts/ColabThi-webfont.woff') format('woff'), url('../stylesheets/fonts/ColabThi-webfont.ttf') format('truetype'), url('../stylesheets/fonts/ColabThi-webfont.svg') format('svg');
+}

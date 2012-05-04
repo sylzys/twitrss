@@ -1,0 +1,59 @@
+@import "compass/reset";
+@import "base";
+
+#container {
+	overflow: auto;
+}
+input[type="text"] {
+	
+}
+.container1 {
+	width: percentage($container); 
+	margin: 0 auto;
+	@include gradient;
+}
+
+.container2 {
+	width: 2 * $container; 
+	margin: 0 auto;
+	@include gradient;
+}
+
+.container3 {
+	width: 3 * $container; 
+	margin: 0 auto;
+	@include gradient;
+}
+
+.container4 {
+	width: 4 * $container; 
+	margin: 0 auto;
+	@include gradient;
+}
+
+.div1 {
+	width: percentage($div_width);
+	@include border;
+	@include box-sizing(border-box);
+} 
+
+.div2 {
+	width: percentage($div_width / 2);
+	float:left;
+	@include border;
+	@include box-sizing(border-box);
+} 
+
+.div3 {
+	width: percentage($div_width / 3);
+	float:left;
+	@include border;
+	@include box-sizing(border-box)
+} 
+
+.div4 {
+	width: percentage($div_width / 4);
+	float:left;
+	@include border;
+	@include box-sizing(border-box)
+} 

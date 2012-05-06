@@ -34,33 +34,33 @@
 
 
 
-$('#addd').on('click', function() {
+// $('#addd').on('click', function() {
    
-  console.log("adding a div: " + counter);
-    // enlarge container 10% more
-    // $('#container').sleep(2500);
+//   console.log("adding a div: " + counter);
+//     // enlarge container 10% more
+//     // $('#container').sleep(2500);
     
-    $.ajax({
-      url:  '/search/',
-        data: 'exp=twitterapi',
-        type:       'GET',
-        dataType: "json",
-       // jsonpCallback: "parse_res",
-        success: function(data) {
-          console.log("OK");
-          console.log(data);
+//     $.ajax({
+//       url:  '/search/',
+//         data: 'exp=twitterapi',
+//         type:       'GET',
+//         dataType: "json",
+//        // jsonpCallback: "parse_res",
+//         success: function(data) {
+//           console.log("OK");
+//           console.log(data);
            
-          $('.search').parent().next().next().prepend(data+"<br />");
-        },
-        error : function(data){
-          console.log("error");
-          console.log(data);
-        }
-      });
+//           $('.search').parent().next().next().prepend(data+"<br />");
+//         },
+//         error : function(data){
+//           console.log("error");
+//           console.log(data);
+//         }
+//       });
   // }
   // else 
   //   console.log("too wide !");
-});
+// });
 
 
 
@@ -74,12 +74,14 @@ $('#addd').on('click', function() {
 
 //submit button
 $('#container').on('click', '.search', function() {
-  console.log("adding a twit"); 
+  var to_search = $(this).prev().val();
+  $(this).parent().next().html($(this).prev().val());
+  console.log("adding a twit from"+ $(this).prev().val()); 
    var that = this;
   $(this).everyTime(2000, function() {
     $.ajax({
       url:  '/search/',
-        data: 'exp=twitterapi',
+        data: 'exp='+ to_search,
         type:       'GET',
         dataType: "json",
        // jsonpCallback: "parse_res",

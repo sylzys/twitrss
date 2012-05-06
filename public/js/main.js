@@ -1,10 +1,25 @@
 (function($) {
   var counter = 1;
-  $('#add').click(function(event) {
-    if (++counter < 5){
-      console.log("adding a div: " + counter);
+//  $('#add').click(function(event) {
+  $('#add').on('click', function() {
+    if (++counter >= 5){
+      var w = $('.div4').width();
+      console.log(w);
+      console.log("too wide !");
+      // $('#container').children(3).hide();
+      $('#container').children('div:(first))').animate({
+       // $('#container').children('div:not(:first)').each(function(){
+        left: '-='+w,
+      }, 2000, function() {
+    // Animation complete.
+  });
+     // setTimeOut(function() { hello();}, 2010);
+    }
+// else {
+  console.log("adding a div: " + counter);
     // enlarge container 10% more
-    $('#container').width(50+(counter * 10)+"%");
+    // $('#container').sleep(2500);
+    $('#container').delay(2100).width(50+(counter * 10)+"%");
     //appendinga new div
     var newdiv = $('#template').clone().appendTo('#container');
     newdiv.append("div"+counter);
@@ -14,23 +29,41 @@
       $(this).removeClass('div1', 'div2', 'div3', 'div4').addClass("div"+counter);
 
     });
+    
+});
+
+
+
+$('#addd').on('click', function() {
+   
+  console.log("adding a div: " + counter);
+    // enlarge container 10% more
+    // $('#container').sleep(2500);
+    
     $.ajax({
-      url:  'http://search.twitter.com/search.json?q=twitterapi',
-        //data: 'twitterapi',
+      url:  '/search/',
+        data: 'exp=twitterapi',
         type:       'GET',
-        dataType: "jsonp",
-        jsonpCallback: "parse_res",
+        dataType: "json",
+       // jsonpCallback: "parse_res",
         success: function(data) {
+          console.log("OK");
           console.log(data);
+           
+          $('.search').parent().next().next().prepend(data+"<br />");
         },
         error : function(data){
+          console.log("error");
           console.log(data);
         }
       });
-  }
-  else 
-    console.log("too wide !");
+  // }
+  // else 
+  //   console.log("too wide !");
 });
+
+
+
 
 
   // MAIN
@@ -38,10 +71,32 @@
     $('#container').width("50%");
     $('#template').clone().appendTo('#container');
     $('#template').hide();
+
 //submit button
-$('.search').click(function(event) {  
-  alert("damnit");
-  console.log("searching for: " + $(this).text());      
+$('#container').on('click', '.search', function() {
+  console.log("adding a twit"); 
+   var that = this;
+  $(this).everyTime(2000, function() {
+    $.ajax({
+      url:  '/search/',
+        data: 'exp=twitterapi',
+        type:       'GET',
+        dataType: "json",
+       // jsonpCallback: "parse_res",
+        success: function(data) {
+          console.log("OK");
+          console.log(data);
+         $(that).parent().next().next().prepend(data);  
+          
+        },
+        error : function(data){
+          console.log("error");
+          console.log(data);
+        }
+      });
+    
+    console.log("hello");
+  });  
 });
  //END submit button
 

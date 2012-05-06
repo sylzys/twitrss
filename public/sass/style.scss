@@ -4,9 +4,11 @@
 
 #container {
 	overflow: auto;
+	word-wrap: break-word;
 	margin: 0 auto;
 	/*width: percentage($container); */
 	@include gradient;
+	padding:3px;
 }
 .searchholder input[type="text"] {
 	width:80%;
@@ -70,6 +72,8 @@
 	@include border;
 	@include box-sizing(border-box);
 	position: relative;
+	word-wrap: break-word;
+	padding:5px;
 } 
 
 .div2 {
@@ -78,6 +82,7 @@
 	@include border;
 	@include box-sizing(border-box);
 	position: relative;
+	padding:5px;
 } 
 
 .div3 {
@@ -86,6 +91,7 @@
 	@include border;
 	@include box-sizing(border-box);
 	position: relative;
+	padding:5px;
 } 
 
 .div4 {
@@ -94,4 +100,8 @@
 	@include border;
 	@include box-sizing(border-box);
 	position: relative;
+	padding:5px;
 } 
+.prof_img {
+	border:1px solid grey;
+}

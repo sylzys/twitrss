@@ -98,6 +98,56 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
 }
 
+#right_panel {
+  width: 10%;
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  border: 1px solid red;
+}
+
+#right {
+  width: 5%;
+  position: absolute;
+  top: 15%;
+  right: 0px;
+  border: 1px solid red;
+}
+
+#panel {
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  /*top: -400px;
+  left: 0px;*/
+  left: -400px;
+  top: 5%;
+  z-index: 200;
+  background-color: #333333;
+}
+
+#paneltab {
+  height: 30px;
+  width: 40px;
+  position: absolute;
+  bottom: 0px;
+  right: -80px;
+  background-color: #000000;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+#panel-tab {
+  height: 30px;
+  width: 40px;
+  position: absolute;
+  bottom: 0px;
+  right: -40px;
+  background-color: #000000;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
 .div1 {
   width: 100%;
   border: 1px solid #cccccc;
@@ -105,6 +155,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
 }
 
 .div2 {
@@ -115,6 +166,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
 }
 
 .div3 {
@@ -125,6 +177,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
 }
 
 .div4 {
@@ -135,4 +188,5 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
 }

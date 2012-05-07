@@ -101,6 +101,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .title {
   text-align: center;
+  margin-bottom: 5px;
+  text-decoration: underline;
 }
 
 #right_panel {
@@ -222,6 +224,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   min-height: 50px;
   height: auto !important;
   height: 50px;
+  padding: 3px;
+  border: 1px solid black;
 }
 
 .tweet_header {
@@ -235,6 +239,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-left: 10px;
   word-wrap: break-word;
   /*	border:1px dashed green;*/
+}
+
+.tweet_details {
+  display: none;
+  font-family: 'Argh';
+  color: #aaaaaa;
+  margin-left: 10px;
+  margin-top: 2px;
+  font-size: 0.8em;
 }
 
 .user a {

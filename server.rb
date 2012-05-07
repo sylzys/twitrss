@@ -19,7 +19,6 @@ get '/search/' do
 	@toto = JSON.parse(response.body)
 	div = ""
 	@toto['results'].each do |key,value| 
-		puts key
 	params[:exp].gsub!(/%23/, "#");
 	if params[:exp].include? "%20"
 		terms = params[:exp].split('%20')
@@ -28,10 +27,13 @@ get '/search/' do
 		end	
 	end
 	key['text'].gsub!(/#{params[:exp]}/i, "<span class='found_word'>#{params[:exp]}</span>");
-	
-	div = div + "<div class='tweet'><img class='prof_img' src='#{key['profile_image_url']}' />
+	date = key['created_at'].slice(4..-10)
+	div = div + "<div class='tweet'>
+	<img class='prof_img' src='#{key['profile_image_url']}' />
 	<span class='user'><a href='http://twitter.com/#!/#{key['from_user']}' target='blank_'>#{key['from_user']}</a></span>
-    <div class='tweet_content'><p><br /><br />#{key['text']}</p></div></div>";
+    <div class='tweet_content'><p><br /><br />#{key['text']}</p></div>
+    <div class='tweet_details'>#{date}&nbsp;.&nbsp;<a href='http://twitter.com/#!/#{key['from_user']}/status/#{key['id']}' target='blank_'>Details</a></div>
+    </div>";
 end
 div.to_json
 end

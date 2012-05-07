@@ -1,0 +1,13 @@
+ID
+
+si Sup width : onglets
+si inf a width: vider la recherche ms laissé le div
+menu deroulant des X dernières recherches
+
+jquery recup recherche, et envoi en GET le critere + le div
+ruby recup recherche, json ac recherche et recup, prepend ds le div
+
+fonction de verif pr les nouveaux slt
+
+stopper ler everytime en cours
+regexp sur les phrases ac espace

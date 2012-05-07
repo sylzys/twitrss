@@ -24,8 +24,8 @@
     newdiv.show();
     //modify each content div
     $('#container').children('div:not(:first)').each(function(){
-      $(this).removeClass('div1', 'div2', 'div3', 'div4').addClass("div"+counter);
-
+      $(this).removeClass().addClass("div"+counter);
+      console.log("removed class");
     });
     
   });
@@ -39,8 +39,8 @@
 //end init container
 
 //
-  $('.div1').click(function(event) {
-  var to_search = $(this).prev().val();
+  $('.tweet').click(function(event) {
+  console.log("hello "+ $(this).html());
 });
 //
 //submit button
@@ -69,7 +69,7 @@ $('#container').on('click', '.search', function() {
  //first call
  retrieve_data(to_search, that);
 //update call
-$(this).everyTime(5000, 'filling', function() {
+$(this).everyTime(15000, 'filling', function() {
   retrieve_data(to_search, that);
 });  
 });
@@ -97,9 +97,12 @@ $(this).everyTime(5000, 'filling', function() {
 }
 
 //DELEGATE
-$("#tweet").delegate('#tweet_content a', 'click', function(event) {
+$("#container").delegate('.tweet', 'click', function(event) {
     var that = this;
-    console.log("delegate");
+    $(this).children(".tweet_details").toggle('fast', function() {
+    // Animation complete.
+  });
+    console.log("delegate"+$(this).children(".tweet_content").attr("display"));
   });
 //
     //slide panel

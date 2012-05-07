@@ -1,24 +1,23 @@
 (function($) {
   var counter = 1;
-//  $('#add').click(function(event) {
   $('#add').on('click', function() {
+    //after 4 divs : make tabs
     if (++counter >= 5){
       var w = $('.div4').width();
       console.log(w);
       console.log("too wide !");
-      // $('#container').children(3).hide();
+      //animate divs through the left
       $('#container').children('div:(first))').animate({
        // $('#container').children('div:not(:first)').each(function(){
         left: '-='+w,
       }, 2000, function() {
     // Animation complete.
   });
-     // setTimeOut(function() { hello();}, 2010);
-    }
-// else {
+    
+   }
+
   console.log("adding a div: " + counter);
     // enlarge container 10% more
-    // $('#container').sleep(2500);
     $('#container').delay(2100).width(50+(counter * 10)+"%");
     //appendinga new div
     var newdiv = $('#template').clone().appendTo('#container');
@@ -30,46 +29,68 @@
 
     });
     
-});
+  });
 
   // MAIN
   $(function() {
+    //init container
     $('#container').width("50%");
     $('#template').clone().appendTo('#container');
     $('#template').hide();
+//end init container
 
 //submit button
 $('#container').on('click', '.search', function() {
   var to_search = $(this).prev().val();
+
+  //displaying search title
   $(this).parent().next().html($(this).prev().val());
-  console.log("adding a twit from"+ $(this).prev().val()); 
-   var that = this;
-   to_search = to_search.replace('#', '%23');
-   console.log(to_search);
-  $(this).everyTime(5000, function() {
-    $.ajax({
-      url:  '/search/',
-        data: 'exp='+ to_search,
-        type:       'GET',
-        dataType: "json",
-       // jsonpCallback: "parse_res",
-        success: function(data) {
-          console.log("OK");
-          console.log(data);
-         $(that).parent().next().next().prepend(data);  
-          
-        },
-        error : function(data){
-          console.log("error");
-          console.log(data);
-        }
-      });
-    
-    console.log("hello");
-  });  
+
+  console.log("searching tweets about "+ $(this).prev().val()); 
+  //empty input text
+  $(this).prev().val('');
+
+  var that = this;
+  
+  //replace '#''
+  to_search = to_search.replace('#', '%23');
+
+  //first call launches timers, others kills before new search
+   if ($(this).attr("name") == 'start')
+    $(this).attr("name", "stop");
+  else {
+   $(this).killTime('filling');
+   $(this).parent().next().next().html("");
+ }
+ //first call
+ retrieve_data(to_search, that);
+//update call
+$(this).everyTime(5000, 'filling', function() {
+  retrieve_data(to_search, that);
+});  
 });
  //END submit button
 
+ //ajax call to retrieve the tweets
+ function retrieve_data(to_search, that){
+  var my_data;
+  $.ajax({
+    url:  '/search/',
+    data: 'exp='+ to_search,
+    type:       'GET',
+    dataType: "json",
+       success: function(data) {
+        console.log("OK");
+       //appending to the div
+        $(that).parent().next().next().prepend(data);  
+        return data;
+
+      },
+      error : function(data){
+        console.log("error");
+      }
+    });
+}
     //slide panel
     var sipPos = 0;
     $("#paneltab").click(function(e) {

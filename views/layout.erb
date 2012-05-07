@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="fr"> 
+<head>
+  <title>My Twitter RSS</title>
+  <meta charset="UTF-8">
+  <!-- <link href="public/stylesheets/style.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <link rel='stylesheet' media='all and (max-width: 320px)' href='stylesheets/screen.css' />
+  <link rel='stylesheet' media='all and (min-width: 321px)' href='stylesheets/style.css' />
+</head>
+<body>  
+  
+  <div id="content">  
+    <%= yield %>  
+  </div>  
+ 
+  <!-- Load script -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+  <script>window.jQuery || document.write("<script src='js/jquery-1.7.1.min.js'>\x3C/script>")</script>
+  <script src="js/jquery-timers.js"></script>
+  <script src="js/main.js"></script>
+</body>  
+</html>  

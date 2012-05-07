@@ -200,4 +200,41 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .prof_img {
   border: 1px solid grey;
+  /*position:absolute;
+  top:5px;*/
+}
+
+.tweet {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.tweet_header {
+  /*	position:absolute;*/
+  /*border:1px dotted blue;*/
+  /*top:12px;
+  left:12px;*/
+}
+
+.tweet_content {
+  margin-left: 58px;
+  word-wrap: break-word;
+  /*	border:1px dashed green;*/
+}
+
+.user {
+  float: right;
+}
+
+.found_word {
+  color: red;
+  text-decoration: italic;
+}
+
+#logo {
+  width: 25%;
+  height: 132px;
+  margin: 0 auto;
+  background-image: url("../img/logo2.jpg");
+  /*padding:2px;*/
 }

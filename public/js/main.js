@@ -38,6 +38,11 @@
     $('#template').hide();
 //end init container
 
+//
+  $('.div1').click(function(event) {
+  var to_search = $(this).prev().val();
+});
+//
 //submit button
 $('#container').on('click', '.search', function() {
   var to_search = $(this).prev().val();

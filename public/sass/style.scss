@@ -12,6 +12,7 @@
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+
 }
 .searchholder input[type="text"] {
 	width:80%;
@@ -107,27 +108,41 @@
 } 
 .prof_img {
 	border:1px solid grey;
+	float:left;
+	margin-right:10px;
 	/*position:absolute;
 	top:5px;*/
 }
 .tweet {
 	margin-bottom:5px;
 	position:relative;
+	background: #F3F3F3;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#DEDEDE)); 
+	background-image: -webkit-linear-gradient(top, #FFFFFF, #DEDEDE); 
+	background-image: -moz-linear-gradient(top, #FFFFFF, #DEDEDE); 
+	background-image: -ms-linear-gradient(top, #FFFFFF, #DEDEDE); 
+	background-image: -o-linear-gradient(top, #FFFFFF, #DEDEDE); 
+	background-image: linear-gradient(top, #FFFFFF, #DEDEDE);
+	min-height:50px;
+	height:auto !important;
+	height:50px; 
 }
 .tweet_header {
-/*	position:absolute;*/
+	/*	position:absolute;*/
 	/*border:1px dotted blue;*/
 	/*top:12px;
 	left:12px;*/
 }
 .tweet_content {
-	margin-left:58px;
+	margin-left:10px;
 	word-wrap: break-word;
-/*	border:1px dashed green;*/
+	/*	border:1px dashed green;*/
 }
 
-.user {
+.user a{
 	float:right;
+	font-family: 'Argh';
+	color:#aaaaaa;
 }
 .found_word {
 	color:red;

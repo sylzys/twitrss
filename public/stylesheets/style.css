@@ -203,6 +203,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .prof_img {
   border: 1px solid grey;
+  float: left;
+  margin-right: 10px;
   /*position:absolute;
   top:5px;*/
 }
@@ -210,6 +212,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .tweet {
   margin-bottom: 5px;
   position: relative;
+  background: #F3F3F3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#dedede));
+  background-image: -webkit-linear-gradient(top, white, #dedede);
+  background-image: -moz-linear-gradient(top, white, #dedede);
+  background-image: -ms-linear-gradient(top, white, #dedede);
+  background-image: -o-linear-gradient(top, white, #dedede);
+  background-image: linear-gradient(top, #ffffff, #dedede);
+  min-height: 50px;
+  height: auto !important;
+  height: 50px;
 }
 
 .tweet_header {
@@ -220,13 +232,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 .tweet_content {
-  margin-left: 58px;
+  margin-left: 10px;
   word-wrap: break-word;
   /*	border:1px dashed green;*/
 }
 
-.user {
+.user a {
   float: right;
+  font-family: 'Argh';
+  color: #aaaaaa;
 }
 
 .found_word {

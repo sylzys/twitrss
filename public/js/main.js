@@ -21,7 +21,6 @@
     $('#container').delay(2100).width(50+(counter * 10)+"%");
     //appendinga new div
     var newdiv = $('#template').clone().appendTo('#container');
-    newdiv.append("div"+counter);
     newdiv.show();
     //modify each content div
     $('#container').children('div:not(:first)').each(function(){
@@ -91,6 +90,13 @@ $(this).everyTime(5000, 'filling', function() {
       }
     });
 }
+
+//DELEGATE
+$("#tweet").delegate('#tweet_content a', 'click', function(event) {
+    var that = this;
+    console.log("delegate");
+  });
+//
     //slide panel
     var sipPos = 0;
     $("#paneltab").click(function(e) {

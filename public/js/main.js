@@ -44,6 +44,8 @@ $('#container').on('click', '.search', function() {
   $(this).parent().next().html($(this).prev().val());
   console.log("adding a twit from"+ $(this).prev().val()); 
    var that = this;
+   to_search = to_search.replace('#', '%23');
+   console.log(to_search);
   $(this).everyTime(5000, function() {
     $.ajax({
       url:  '/search/',

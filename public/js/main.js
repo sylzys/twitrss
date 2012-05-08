@@ -1,30 +1,40 @@
 (function($) {
   var counter = 1;
+  var css_class = 1;
   $('#add').on('click', function() {
     //after 4 divs : make tabs
     if (++counter >= 5){
-      var w = $('.div4').width();
+      var w = $('.div4').width()+15;
       console.log(w);
       console.log("too wide !");
       //animate divs through the left
-      $('#container').children('div:(first))').animate({
-       // $('#container').children('div:not(:first)').each(function(){
-        left: '-='+w,
-      }, 2000, function() {
-    // Animation complete.
-  });
-    
+      //$('#container').children('div:(first))').animate({
+  //      $('#container').children('div:(:first)').animate({
+  //       left: '-='+w,
+  //     }, 1, function() {
+  //   // Animation complete.
+  // });
+     // $('#container').hide("slide", { direction: "left" }, 1000);
    }
-
-  console.log("adding a div: " + counter);
+   (counter < 5) ? css_class = counter : css_class = 4;
+   (counter < 5) ? $('#container').width(50+(counter * 10)+"%") : $('#container').width($('#container').width() + w)
+  console.log("adding a div: " + $('#container').width());
     // enlarge container 10% more
-    $('#container').delay(2100).width(50+(counter * 10)+"%");
+    $('#container').width(50+(counter * 10)+"%");
+  
     //appendinga new div
-    var newdiv = $('#template').clone().appendTo('#container');
-    newdiv.show();
+//     setInterval(function() {
+//       console.log("wait");
+// }, 2000);
+// setTimeout(function() {
+var newdiv = $('#template').clone().appendTo('#container');
+newdiv.show();
+// }, 2000);
+    // var newdiv = $('#template').clone().appendTo('#container');
+    // newdiv.show();
     //modify each content div
     $('#container').children('div:not(:first)').each(function(){
-      $(this).removeClass().addClass("div"+counter);
+      $(this).removeClass().addClass("div"+css_class);
       console.log("removed class");
     });
     

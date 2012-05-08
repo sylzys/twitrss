@@ -18,6 +18,9 @@ get '/search/' do
 	response = RestClient.get(url)
 	@toto = JSON.parse(response.body)
 	div = ""
+	#instancing a new var
+	var_name = "@#{params[:exp]}"  
+	####
 	@toto['results'].each do |key,value| 
 	params[:exp].gsub!(/%23/, "#");
 	if params[:exp].include? "%20"
@@ -28,7 +31,7 @@ get '/search/' do
 	end
 	key['text'].gsub!(/#{params[:exp]}/i, "<span class='found_word'>#{params[:exp]}</span>");
 	date = key['created_at'].slice(4..-10)
-	div = div + "<div class='tweet'>
+	div = div + "<div class='tweet' id='#{key['id']}'>
 	<img class='prof_img' src='#{key['profile_image_url']}' />
 	<span class='user'><a href='http://twitter.com/#!/#{key['from_user']}' target='blank_'>#{key['from_user']}</a></span>
     <div class='tweet_content'><p><br /><br />#{key['text']}</p></div>

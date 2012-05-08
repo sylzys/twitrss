@@ -3,7 +3,7 @@
 @import "fonts";
 
 #container {
-	overflow: auto;
+	overflow: hidden;
 	word-wrap: break-word;
 	margin: 0 auto;
 	/*width: percentage($container); */

@@ -57,7 +57,7 @@
 	width: 40px;
 	position: absolute;
 	bottom: 0px;
-	right: -80px;
+	right: -40px;
 	background-color: #000000;
 	text-decoration: none;
 	color: #FFFFFF;
@@ -176,3 +176,7 @@
 	background-image:url('../img/logo2.jpg');
 	/*padding:2px;*/
 }
+input[type="submit"] {
+	font-family:"Icons";
+}
+

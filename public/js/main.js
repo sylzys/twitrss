@@ -8,27 +8,6 @@
       var w = $('#container').width()/4 + 15;
       console.log(w);
       console.log("too wide !");
-      //animate divs through the left
-      //$('#container').children('div:(first))').animate({
-  //      $('#container').children('div:(:first)').animate({
-  //       left: '-='+w,
-  //     }, 1, function() {
-  //   // Animation complete.
-  // });
-  //    $('#container').hide("slide", { direction: "left" }, 1000);
-  //     $('#1').animate({
-  //       left: '-=' + w,
-  //     }, 1, function() {
-  //   // Animation complete.
-  // });
-  
-  //   $('#container').children('div:not(:first)').each(function(){
-  //       $(this).animate({
-  //       left: '-='+w,
-  //     }, 1000, function() {
-  //   // Animation complete.
-  // });
-  // });
 
    }
    (counter < 5) ? css_class = counter : css_class = "tab";
@@ -39,22 +18,59 @@
 // newdiv.attr("id", counter);
 // newdiv.show();
 
-setTimeout(function() {
-var newdiv = $('#template').clone().appendTo('#container');
+// setTimeout(function() {
+var newdiv = $('#template').clone();
 newdiv.attr("id", counter);
+newdiv.addClass("div"+css_class).appendTo('#container');
 newdiv.show();
-}, 10);
-// }, 2000);
-    // var newdiv = $('#template').clone().appendTo('#container');
-    // newdiv.show();
+// }, 10);
+
     //modify each content div
     $('#container').children('div:not(:first)').each(function(){
+      
       $(this).removeClass().addClass("div"+css_class);
-      console.log("removed class");
+      
     });
-    if (counter >= 5)
-      $('#1').removeClass().addClass("divtabhidden");
-  });
+    if (counter >= 5) {
+       console.log("counter is "+counter);
+       for (i = 1; i <= counter - 4; i++) {
+        console.log("i is "+i);
+       $('#'+i).removeClass().addClass("divtabhidden");
+      }
+    }
+  }); //END ADD click
+
+   //remove a search 
+ $('#container').on('click', '.tweet_remove', function() {
+
+  //reaffect ID's
+  
+  alert($(this).parent().parent().attr("id"));
+   $(this).killTime('filling');
+   if (counter == 1) {
+      //empty title
+    $(this).parent().next().html('');
+      console.log("first div");
+    }
+
+    else {
+      if (counter == 2)
+        $('#container').width("50%") ;
+    
+    $(this).parent().parent().remove();
+//       if (counter < 5) { //no tabs yet
+       counter--;
+      var i = 1;
+      $('#container').children('div:not(:first)').each(function(){
+      $(this).removeClass().addClass("div"+counter);
+      $(this).attr("id", i);
+      i++;
+     
+    });
+// //resize container todo
+//     }
+  }
+});
 
   // MAIN
   $(function() {
@@ -142,7 +158,7 @@ $("#container").delegate('.tweet', 'click', function(event) {
         else { sipPos = 0; }
       });
   });//END slide panel
-
+  $('input[type="submit"]').val('M');
   });//END main
 })(jQuery);
 

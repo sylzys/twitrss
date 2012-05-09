@@ -87,6 +87,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  position: relative;
 }
 
 .searchholder input[type="text"] {
@@ -120,9 +121,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border: 1px solid red;
 }
 
-#panel {
+#tab_container {
   width: 100px;
-  height: 30px;
   position: absolute;
   /*top: -400px;
   left: 0px;*/
@@ -130,9 +130,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   top: 5%;
   z-index: 200;
   background-color: #333333;
+  min-height: 30px;
+  height: auto !important;
+  height: 30px;
 }
 
-#paneltab {
+.tab_template {
+  /*display:none;*/
+}
+
+.tab {
   height: 30px;
   width: 40px;
   position: absolute;

@@ -1,10 +1,11 @@
 (function($) {
   var counter = 1;
   var css_class = 1;
+  var delay = 0;
   $('#add').on('click', function() {
     //after 4 divs : make tabs
     if (++counter >= 5){
-      var w = $('.div4').width()+15;
+      var w = $('#container').width()/4 + 15;
       console.log(w);
       console.log("too wide !");
       //animate divs through the left
@@ -14,21 +15,35 @@
   //     }, 1, function() {
   //   // Animation complete.
   // });
-     // $('#container').hide("slide", { direction: "left" }, 1000);
-   }
-   (counter < 5) ? css_class = counter : css_class = 4;
-   (counter < 5) ? $('#container').width(50+(counter * 10)+"%") : $('#container').width($('#container').width() + w)
-  console.log("adding a div: " + $('#container').width());
-    // enlarge container 10% more
-    $('#container').width(50+(counter * 10)+"%");
+  //    $('#container').hide("slide", { direction: "left" }, 1000);
+  //     $('#1').animate({
+  //       left: '-=' + w,
+  //     }, 1, function() {
+  //   // Animation complete.
+  // });
   
-    //appendinga new div
-//     setInterval(function() {
-//       console.log("wait");
-// }, 2000);
-// setTimeout(function() {
+  //   $('#container').children('div:not(:first)').each(function(){
+  //       $(this).animate({
+  //       left: '-='+w,
+  //     }, 1000, function() {
+  //   // Animation complete.
+  // });
+  // });
+
+   }
+   (counter < 5) ? css_class = counter : css_class = "tab";
+   (counter < 5) ? $('#container').width(50+(counter * 10)+"%") : $('#container').width("90%");
+  console.log("adding a div: delay" + delay);
+   
+// var newdiv = $('#template').clone().appendTo('#container');
+// newdiv.attr("id", counter);
+// newdiv.show();
+
+setTimeout(function() {
 var newdiv = $('#template').clone().appendTo('#container');
+newdiv.attr("id", counter);
 newdiv.show();
+}, 10);
 // }, 2000);
     // var newdiv = $('#template').clone().appendTo('#container');
     // newdiv.show();
@@ -37,14 +52,17 @@ newdiv.show();
       $(this).removeClass().addClass("div"+css_class);
       console.log("removed class");
     });
-    
+    if (counter >= 5)
+      $('#1').removeClass().addClass("divtabhidden");
   });
 
   // MAIN
   $(function() {
     //init container
     $('#container').width("50%");
-    $('#template').clone().appendTo('#container');
+    var first_div = $('#template').clone();
+    first_div.attr("id", "1");
+    first_div.appendTo('#container');
     $('#template').hide();
 //end init container
 

@@ -33,7 +33,6 @@
 	position:absolute;
 	top:15%;
 	right:10%; 
-	border:1px solid red;
 }
 #right{
 	width:5%;
@@ -48,7 +47,7 @@
 	position: absolute;
 	/*top: -400px;
 	left: 0px;*/
-	left: -400px;
+	left: -100px;
 	top: 5%;
 	z-index: 200;
 	background-color: #333333;
@@ -107,7 +106,18 @@
 	@include box-sizing(border-box);
 	position: relative;
 	padding:5px;
-} 
+}
+.divtab {
+	width:25%;
+	float:left;
+	@include border;
+	@include box-sizing(border-box);
+	position: relative;
+	padding:5px;
+}
+.divtabhidden {
+	display:none;
+}
 .prof_img {
 	border:1px solid grey;
 	float:left;

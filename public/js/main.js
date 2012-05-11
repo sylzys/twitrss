@@ -3,72 +3,73 @@
   var counter = 1;
   var css_class = 1;
   var delay = 0;
-//
+  var tab_l = 0;
+  var tab_r = 0;
+  var w = 0;
 
-$('#add').on('click', function() {
-    //after 4 divs : make tabs
-    if (++counter >= 5){
-      var w = $('#container').width()/4 + 15;
-      console.log(w);
-      console.log("too wide !");
-
-    }
-    (counter < 5) ? css_class = counter : css_class = "tab";
-    (counter < 5) ? $('#container').width(50+(counter * 10)+"%") : $('#container').width("90%");
-    console.log("adding a div: delay" + delay);
-
-// var newdiv = $('#template').clone().appendTo('#container');
-// newdiv.attr("id", counter);
-// newdiv.show();
-
-// setTimeout(function() {
-  var newdiv = $('#template').clone();
-  newdiv.attr("id", counter);
-  newdiv.addClass("div"+css_class).appendTo('#container');
-  newdiv.show();
-// }, 10);
-
-    //modify each content div
-    $('#container').children('div:not(:first)').each(function(){
-
+  //add button
+  $('#add_btn').on('click', function() {
+    //div counter increment
+    counter++;
+    (counter <= 5) ? css_class = counter : css_class = "5";
+    //modifying each div class to fetch new size
+    $('#container').children('div').each(function(){
       $(this).removeClass().addClass("div"+css_class);
-      
     });
-    if (counter >= 5) {
-     for (i = 1; i <= counter - 4; i++) {
-       $('#'+i).removeClass().addClass("divtabhidden");
-       var tab = $(".tab_template").clone();
-       tab.removeAttr("id");
-       tab.children("a").text(i);
-       tab.show();
-       tab.appendTo('#tab_container');
-     }
-
-   }
-  }); //END ADD click
+    //cloning and appending a new div
+    var newdiv = $('#template').clone();
+    newdiv.attr("id", counter);
+    newdiv.removeClass().addClass("div"+css_class).appendTo('#container');
+    //if less than 5 divs
+    if (counter < 5){
+      $('#container').width(60+(counter * 10)+"%");
+    }
+    //5 divs and more
+    else {
+      //one more tab on the left
+      tab_l++;
+      //show left arrow
+      $("#prev").show();
+      $('#container').removeAttr('margin');
+      //splitting wrapper in 4 parts to get a div size
+      w = $('#wrapper').width() / 4;
+      console.log(w);
+      //adjusting every div size
+      $('.div5').width(w);
+      //adjusting container size to fetch all divs
+      $('#container').width(w * counter);
+      //slide container to the left
+      $('#container').animate({
+        marginLeft: '-='+w,
+      }, 1000, function() {
+      });
+    }
+    //sjow new div
+    newdiv.show();
+  }); //END ADD button
 
    //remove a search 
    $('#container').on('click', '.tweet_remove', function() {
-
-     $(this).killTime('filling');
+    //stop the current search timer
+    $(this).killTime('filling');
+     //don't delete if only one div left
      if (counter == 1) {
-      //empty title
       $(this).parent().next().html('');
       console.log("first div");
     }
-
     else {
+      //not the only div left
       if (counter == 2)
         $('#container').width("50%") ;
-
+      //remove the div
       $(this).parent().parent().remove();
-//       if (counter < 5) { //no tabs yet
- counter--;
+      counter--;
 
   //reaffect ID's so that we can delete any div
   var i = 1;
-  $('#container').children('div:not(:first)').each(function(){
-    $(this).removeClass().addClass("div"+counter);
+  //reaffect div size
+  $('#container').children('div').each(function(){
+    $(this).removeClass().addClass("div"+css_class);
     $(this).attr("id", i);
     i++;
 
@@ -78,22 +79,19 @@ $('#add').on('click', function() {
 
   // MAIN
   $(function() {
-    //init container
+    //init container and hide divs
     $('#container').width("50%");
     var first_div = $('#template').clone();
     first_div.attr("id", "1");
     first_div.appendTo('#container');
     $('#template').hide();
-    $('.tab_template').hide();
+    $('#next').hide();
+    $('#prev').hide();
     
 
 //end init container
 
-//
-$('.tweet').click(function(event) {
-  console.log("hello "+ $(this).html());
-});
-//
+
 //submit button
 $('#container').on('click', '.search', function() {
   var to_search = $(this).prev().val();
@@ -101,16 +99,13 @@ $('#container').on('click', '.search', function() {
   //displaying search title
   $(this).parent().next().html($(this).prev().val());
 
-  console.log("searching tweets about "+ $(this).prev().val()); 
   //empty input text
   $(this).prev().val('');
-
-  var that = this;
-  
-  //replace '#''
+  var that = this;  
+  //replace '#'
   to_search = to_search.replace('#', '%23');
 
-  //first call launches timers, others kills before new search
+  //first call launches timers, kill others before new search
   if ($(this).attr("name") == 'start')
     $(this).attr("name", "stop");
   else {
@@ -155,17 +150,43 @@ $("#container").delegate('.tweet', 'click', function(event) {
   });
   console.log("delegate"+$(this).children(".tweet_content").attr("display"));
 });
-//
-    //slide panel
-    var sipPos = 0;
-    $(".tab").click(function(e) {
-      e.preventDefault();
 
-      $("#tab_container").animate({ left: sipPos }, 800, 'linear', function() {
-        if(sipPos == 0) { sipPos = -100; }
-        else { sipPos = 0; }
-      });
-  });//END slide panel
+    //next button click
+    $('#next_btn').click(function(event) {
+      //decrement tab number on the right if not zero
+      if (tab_r != 0) {
+        tab_r--;
+        if (counter >=5) { //if more than 5 divs, there's one more on the left
+          tab_l++;
+        $("#prev").show();
+      }
+        //slide container
+        $('#container').animate({
+          marginLeft: '-='+w,
+        }, 1000, function() {
+        });
+      }
+      //no more divs on the right, hide next button
+      if (tab_r == 0) 
+        $("#next").hide();
+    }); //end Next button click
+
+    //prev button click
+    $('#prev_btn').click(function(event) {
+      if (tab_l != 0) {
+        tab_l--;
+        if (counter >=5) {
+          tab_r++;
+          $("#next").show();
+        }
+        $('#container').animate({
+          marginLeft: '+='+w,
+        }, 1000, function() {
+        });
+      }
+      if (tab_l == 0)
+        $("#prev").hide();
+    });//END prev button click
     $('input[type="submit"]').val('M');
   });//END main
 })(jQuery);

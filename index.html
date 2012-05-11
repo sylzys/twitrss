@@ -7,26 +7,27 @@
 	<title>My Twitter RSS</title>
 	<meta charset="UTF-8">
 	<!-- <link href="public/stylesheets/style.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
-	<link rel='stylesheet' media='all and (max-width: 320px)' href='public/stylesheets/screen.css' />
-	<link rel='stylesheet' media='all and (min-width: 321px)' href='public/stylesheets/style.css' />
+	<!-- <link rel='stylesheet' media='all and (max-width: 320px)' href='public/stylesheets/screen.css' /> -->
+	<link rel='stylesheet' media='all and (min-width: 321px)' href='style.css' />
 </head>
 <body>
-	<div id="container">
-		<div><input type="button" id="add" value="New" /></div>
-		<div id="template" class="div1">
-			<div class="searchholder"><input type="text" placeholder="Recherche..."  name="request" />
-			<div><input type="button" class="add" value="New" /></div>
-			<div class="title"> TOTO</div>
-		</div>
-	</div>
-	<div id="right_panel"> <a href="#" id="paneltab">Click Me</a><p></p></div>
-	 <div id="panel">
-      <a href="#" id="panel-tab">Click Me</a>
-      <p>Panel content goes here</p>
-    </div>
+	<div id="wrapper">
+    <div id="container">
+        <div id="list1" class="list">1</div>
+        <div id="list2" class="list">2</div>
+        <div id="list3" class="list">3</div>
+        <div id="list4" class="list">4</div>
+        <div id="list5" class="list">5</div>
+        <div id="list6" class="list">6</div>
+        <div id="list7" class="list">7</div>
+    </div>      
+</div>
+<input type="button" id="prev" value="prev" />
+<input type="button" id="next" value="next" />
+​
 	<!-- Load script -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
 	<script>window.jQuery || document.write("<script src='public/js/jquery-1.7.1.min.js'>\x3C/script>")</script>
-	<script src="public/js/main.js"></script>
+	<script src="main.js"></script>
 </body>
 </html>
